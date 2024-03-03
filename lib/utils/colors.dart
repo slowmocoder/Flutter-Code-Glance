@@ -11,6 +11,9 @@ List<Color> canvasColorList = [
   Color(0xFF011627),
   Color(0xFF2A2734),
   Color(0xFF000000),
+  // Color(0xFFFFFAFA),
+  // Color(0xFFFFFFF0),
+  // Color(0xFFF9F6EE),
 ];
 
 /// Canvas background color list

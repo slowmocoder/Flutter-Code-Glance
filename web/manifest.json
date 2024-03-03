@@ -41,9 +41,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "hosting": {
-    "site": "flutter-code-glance",
-    "public": "public"
-  }
+  ]
 }

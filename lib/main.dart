@@ -20,9 +20,12 @@ class MyApp extends StatelessWidget {
       title: "Flutter Code Image",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: GoogleFonts.poppins().fontFamily,
+        fontFamily: GoogleFonts.spaceGrotesk().fontFamily,
         sliderTheme: SliderThemeData(
           showValueIndicator: ShowValueIndicator.always,
+        ),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
         ),
       ),
       themeMode: ThemeMode.light,
@@ -38,12 +41,17 @@ class MyApp extends StatelessWidget {
         children: [
           LayoutBuilder(
             builder: (layoutContext, layoutConstraint) {
-              return layoutConstraint.maxWidth > 1300 && layoutConstraint.maxHeight > 650 ? CodeDashBoard() : NotAvailableWidget();
+              return
+                      layoutConstraint.maxHeight > 650
+                  ? CodeDashBoard()
+                  : NotAvailableWidget();
             },
           ),
           Observer(
             builder: (context) {
-              return configStore.isLoading ? Center(child: LoaderWidget()) : Offstage();
+              return configStore.isLoading
+                  ? Center(child: LoaderWidget())
+                  : Offstage();
             },
           ),
         ],

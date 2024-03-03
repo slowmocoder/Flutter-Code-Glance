@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_code_image/main.dart';
 import 'package:flutter_code_image/utils/colors.dart';
 import 'package:flutter_code_image/utils/constants.dart';
+import 'package:flutter_code_image/utils/data_provider.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 class ControlPanelWidget extends StatefulWidget {
@@ -22,7 +23,8 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
   @override
   void initState() {
     super.initState();
-    _canvasTitleController = TextEditingController(text: configStore.canvasTitle);
+    _canvasTitleController =
+        TextEditingController(text: configStore.canvasTitle);
   }
 
   @override
@@ -72,11 +74,14 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
               ),
               Divider(),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Title", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                    Text("Title",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500)),
                     const SizedBox(width: 16),
                     Expanded(
                       child: TextField(
@@ -84,12 +89,14 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                         decoration: InputDecoration(
                           hintText: "Image name",
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(8.0)),
                             borderSide: BorderSide(color: Colors.blue),
                           ),
                           filled: true,
                           fillColor: Colors.white,
-                          contentPadding: EdgeInsets.only(bottom: 8.0, left: 8.0, right: 8.0),
+                          contentPadding: EdgeInsets.only(
+                              bottom: 8.0, left: 8.0, right: 8.0),
                         ),
                         onChanged: (title) {
                           configStore.setCanvasTitle(title);
@@ -100,11 +107,14 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Width", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                    Text("Width",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500)),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Observer(builder: (context) {
@@ -123,11 +133,14 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Height", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                    Text("Height",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500)),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Observer(builder: (context) {
@@ -147,15 +160,20 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
               ),
               Divider(),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text("Canvas Text", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    const Text("Canvas Text",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        Text("Size", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                        Text("Size",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500)),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Observer(builder: (context) {
@@ -163,7 +181,8 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                               value: configStore.canvasTextSize,
                               min: canvasTextMinSize,
                               max: canvasTextMaxSize,
-                              label: configStore.canvasTextSize.toInt().toString(),
+                              label:
+                                  configStore.canvasTextSize.toInt().toString(),
                               onChanged: (val) {
                                 configStore.setCanvasTextSize(val);
                               },
@@ -174,7 +193,9 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                     ),
                     Row(
                       children: [
-                        Text("Spacing", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                        Text("Spacing",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500)),
                         const SizedBox(width: 8),
                         const SizedBox(width: 8),
                         Expanded(
@@ -183,7 +204,9 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                               value: configStore.canvasTextLetterSpacing,
                               min: canvasTextLetterMinSize,
                               max: canvasTextLetterMaxSize,
-                              label: configStore.canvasTextLetterSpacing.toInt().toString(),
+                              label: configStore.canvasTextLetterSpacing
+                                  .toInt()
+                                  .toString(),
                               onChanged: (val) {
                                 configStore.setCanvasLetterSpacing(val);
                               },
@@ -197,11 +220,14 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
               ),
               Divider(),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text("Canvas Color", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    const Text("Canvas Color",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 8),
                     Observer(builder: (context) {
                       return Wrap(
@@ -215,7 +241,10 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                                 },
                                 child: Container(
                                   margin: EdgeInsets.all(4),
-                                  width: ((MediaQuery.of(context).size.width * 0.25) / 5) - 15,
+                                  width: ((MediaQuery.of(context).size.width *
+                                              0.25) /
+                                          5) -
+                                      15,
                                   height: 50,
                                   decoration: BoxDecoration(
                                     color: e,
@@ -252,11 +281,18 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
               ),
               Divider(),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text("Canvas Background", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    const Text(
+                      "Canvas Background",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const SizedBox(height: 8),
                     Observer(builder: (context) {
                       return Wrap(
@@ -270,7 +306,10 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                                 },
                                 child: Container(
                                   margin: EdgeInsets.all(4),
-                                  width: ((MediaQuery.of(context).size.width * 0.25) / 5) - 15,
+                                  width: ((MediaQuery.of(context).size.width *
+                                              0.25) /
+                                          5) -
+                                      15,
                                   height: 50,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
@@ -313,6 +352,80 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
               ),
               Divider(),
               Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 16,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Gradient  Aligment",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Begin : ",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                       Observer(builder: (_)=> DropdownButton(
+                         value: configStore.gradientBeginningAlignment,
+                         style: TextStyle(fontSize: 14),
+                         padding: EdgeInsets.all(8),
+                         items: gradientBeginingOptionList.map((e) {
+                           return DropdownMenuItem(
+                             value: e,
+                             child: Text(e.toString()),
+                           );
+                         }).toList(),
+                         onChanged: (alignment) {
+                           configStore
+                               .serGradientBeginningAlignment(alignment!);
+                         },
+                       ),),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "End : ",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                       Observer(builder: (_)=> DropdownButton(
+                         style: TextStyle(fontSize: 14),
+                         padding: EdgeInsets.all(8),
+                         value: configStore.gradientEndingAlignment,
+                         items: gradientEndingOptionList.map((e) {
+                           return DropdownMenuItem(
+                             value: e,
+                             child: Text(e.toString()),
+                           );
+                         }).toList(),
+                         onChanged: (alignment) {
+                           configStore.serGradientEndingAlignment(alignment!);
+                         },
+                       ),),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              Divider(),
+              Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
                   children: [
@@ -324,7 +437,8 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                           value: configStore.canvasBorderRadius,
                           min: startValue,
                           max: endValue,
-                          label: configStore.canvasBorderRadius.toInt().toString(),
+                          label:
+                              configStore.canvasBorderRadius.toInt().toString(),
                           onChanged: (val) {
                             configStore.setCanvasBorderRadius(val);
                           },
@@ -336,14 +450,20 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
               ),
               Divider(),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: Text("Shadow", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: Text("Shadow",
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Row(
                   children: [
-                    Text("Offset X", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                    Text("Offset X",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500)),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Observer(builder: (context) {
@@ -362,11 +482,14 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Offset Y", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                    Text("Offset Y",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500)),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Observer(builder: (context) {
@@ -385,11 +508,14 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Blur", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                    Text("Blur",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500)),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Observer(builder: (context) {
@@ -397,7 +523,8 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                           value: configStore.canvasBlurRadius,
                           min: startValue,
                           max: endValue,
-                          label: configStore.canvasBlurRadius.toInt().toString(),
+                          label:
+                              configStore.canvasBlurRadius.toInt().toString(),
                           onChanged: (val) {
                             configStore.setCanvasBlurRadius(val);
                           },
@@ -408,11 +535,14 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Spread", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                    Text("Spread",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500)),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Observer(builder: (context) {
@@ -420,7 +550,8 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                           value: configStore.canvasSpreadRadius,
                           min: startValue,
                           max: endValue,
-                          label: configStore.canvasSpreadRadius.toInt().toString(),
+                          label:
+                              configStore.canvasSpreadRadius.toInt().toString(),
                           onChanged: (val) {
                             configStore.setCanvasSpreadRadius(val);
                           },
@@ -446,7 +577,8 @@ class _ControlPanelWidgetState extends State<ControlPanelWidget> {
                       ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          html.window.open('https://github.com/LazzyCoderr', 'new tab');
+                          html.window.open(
+                              'https://github.com/LazzyCoderr', 'new tab');
                         },
                     ),
                   ],

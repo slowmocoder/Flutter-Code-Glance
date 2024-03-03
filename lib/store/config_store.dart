@@ -17,6 +17,23 @@ abstract class ConfigStoreBase with Store {
   }
 
   /// Canvas Configuration
+
+  @observable
+  Alignment gradientBeginningAlignment = Alignment.topLeft;
+
+  @action
+  void serGradientBeginningAlignment(Alignment alignment) {
+    gradientBeginningAlignment = alignment;
+  }
+
+  @observable
+  Alignment gradientEndingAlignment = Alignment.bottomRight;
+
+  @action
+  void serGradientEndingAlignment(Alignment alignment) {
+    gradientEndingAlignment = alignment;
+  }
+
   @observable
   String canvasTitle = "";
 
@@ -95,7 +112,8 @@ abstract class ConfigStoreBase with Store {
   }
 
   @observable
-  CanvasBackgroundColorModel canvasBackgroundColor = canvasBackgroundColorList.first;
+  CanvasBackgroundColorModel canvasBackgroundColor =
+      canvasBackgroundColorList.first;
 
   @action
   void setCanvasBackgroundColor(CanvasBackgroundColorModel val) {

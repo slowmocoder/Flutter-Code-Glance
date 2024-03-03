@@ -25,6 +25,40 @@ mixin _$ConfigStore on ConfigStoreBase, Store {
     });
   }
 
+  late final _$gradientBeginningAlignmentAtom = Atom(
+      name: 'ConfigStoreBase.gradientBeginningAlignment', context: context);
+
+  @override
+  Alignment get gradientBeginningAlignment {
+    _$gradientBeginningAlignmentAtom.reportRead();
+    return super.gradientBeginningAlignment;
+  }
+
+  @override
+  set gradientBeginningAlignment(Alignment value) {
+    _$gradientBeginningAlignmentAtom
+        .reportWrite(value, super.gradientBeginningAlignment, () {
+      super.gradientBeginningAlignment = value;
+    });
+  }
+
+  late final _$gradientEndingAlignmentAtom =
+      Atom(name: 'ConfigStoreBase.gradientEndingAlignment', context: context);
+
+  @override
+  Alignment get gradientEndingAlignment {
+    _$gradientEndingAlignmentAtom.reportRead();
+    return super.gradientEndingAlignment;
+  }
+
+  @override
+  set gradientEndingAlignment(Alignment value) {
+    _$gradientEndingAlignmentAtom
+        .reportWrite(value, super.gradientEndingAlignment, () {
+      super.gradientEndingAlignment = value;
+    });
+  }
+
   late final _$canvasTitleAtom =
       Atom(name: 'ConfigStoreBase.canvasTitle', context: context);
 
@@ -234,6 +268,28 @@ mixin _$ConfigStore on ConfigStoreBase, Store {
   }
 
   @override
+  void serGradientBeginningAlignment(Alignment alignment) {
+    final _$actionInfo = _$ConfigStoreBaseActionController.startAction(
+        name: 'ConfigStoreBase.serGradientBeginningAlignment');
+    try {
+      return super.serGradientBeginningAlignment(alignment);
+    } finally {
+      _$ConfigStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void serGradientEndingAlignment(Alignment alignment) {
+    final _$actionInfo = _$ConfigStoreBaseActionController.startAction(
+        name: 'ConfigStoreBase.serGradientEndingAlignment');
+    try {
+      return super.serGradientEndingAlignment(alignment);
+    } finally {
+      _$ConfigStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setCanvasTitle(String title) {
     final _$actionInfo = _$ConfigStoreBaseActionController.startAction(
         name: 'ConfigStoreBase.setCanvasTitle');
@@ -369,6 +425,8 @@ mixin _$ConfigStore on ConfigStoreBase, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
+gradientBeginningAlignment: ${gradientBeginningAlignment},
+gradientEndingAlignment: ${gradientEndingAlignment},
 canvasTitle: ${canvasTitle},
 canvasWidth: ${canvasWidth},
 canvasHeight: ${canvasHeight},

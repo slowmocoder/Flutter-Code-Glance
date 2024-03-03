@@ -29,6 +29,27 @@ class _CodeDashBoardState extends State<CodeDashBoard> {
     });
   }
 
+  void downloadCodePreview() async{
+    configStore.setLoading(true);
+    await imageCaptureController
+        .capture(delay: Duration(seconds: 5))
+        .then((value) {
+      String base64String = base64Encode(value!);
+      String header = "data:image/png;base64,";
+      String url = header + base64String;
+      html.AnchorElement anchorElement = html.AnchorElement(href: url);
+      anchorElement.download = url;
+      anchorElement.setAttribute(
+        'download',
+        configStore.canvasTitle.isNotEmpty
+            ? configStore.canvasTitle.replaceAll(" ", "_").toLowerCase()
+            : 'screenshot',
+      );
+      anchorElement.click();
+      configStore.setLoading(false);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +91,8 @@ class _CodeDashBoardState extends State<CodeDashBoard> {
                           children: [
                             Text(
                               appName,
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             const SizedBox(height: 16),
                             Text(
@@ -81,10 +103,16 @@ class _CodeDashBoardState extends State<CodeDashBoard> {
                             RichText(
                               text: TextSpan(
                                 text: "Source code.",
-                                style: TextStyle(color: Colors.blue, fontSize: 16, fontStyle: FontStyle.italic, decoration: TextDecoration.underline),
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 16,
+                                    fontStyle: FontStyle.italic,
+                                    decoration: TextDecoration.underline),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    html.window.open('https://github.com/LazzyCoderr/Flutter-Code-Glance', 'new tab');
+                                    html.window.open(
+                                        'https://github.com/LazzyCoderr/Flutter-Code-Glance',
+                                        'new tab');
                                   },
                               ),
                             ),
@@ -113,27 +141,23 @@ class _CodeDashBoardState extends State<CodeDashBoard> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async {
-          configStore.setLoading(true);
-          await imageCaptureController.capture(delay: Duration(seconds: 5)).then((value) {
-            String base64String = base64Encode(value!);
-            String header = "data:image/png;base64,";
-            String url = header + base64String;
-            html.AnchorElement anchorElement = html.AnchorElement(href: url);
-            anchorElement.download = url;
-            anchorElement.click();
-            configStore.setLoading(false);
-          });
-        },
+        onPressed: downloadCodePreview,
         backgroundColor: Color(0xFF525E75),
         label: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.download),
+            Icon(
+              Icons.download,
+              color: Colors.white,
+            ),
             const SizedBox(width: 6),
             Text(
               "Download",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
