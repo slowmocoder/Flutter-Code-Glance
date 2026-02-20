@@ -10,4 +10,4 @@ Flutter Code Glance is hustle :exploding_head: free code snippet tool :technolog
 
 Click here : [Flutter Code Glance](https://flutter-code-glance.web.app)
 
-### Made with :blue_heart: by LazzyCoderr:sleeping:
+### Made with :blue_heart: by SlowMoCoder:sleeping:
